@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 name: Build and Deploy
-on: [public]
+on: [workflow_dispatch]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
