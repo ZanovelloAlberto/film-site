@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  
 } from "react-router-dom";
 import Movies from './pages/Blog'
 import SignIn from "./pages/SignIn";
@@ -11,17 +11,13 @@ import SignIn from "./pages/SignIn";
 
 
 import Land from "./pages/Land";
-import { AppBar } from "@material-ui/core";
 
 import { useAuthState } from "react-firebase-hooks/auth";
-import firebase from "firebase/app";
-import { Home } from "@material-ui/icons";
+
 import ReactHome from "./pages/ReactHome";
 import TopBar from "./components/TopBar";
-import { auth, firestore } from "./utils/mybase";
-import { useContext } from "react";
-import { Context } from "./utils/context";
-import { useCollectionData } from "react-firebase-hooks/firestore";
+import { auth } from "./utils/mybase";
+
 import AddMovie from "./pages/AddMovie";
 
 

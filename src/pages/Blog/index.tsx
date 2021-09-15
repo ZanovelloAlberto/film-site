@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 
@@ -13,11 +12,6 @@ import Footer from '../../components/Footer';
 
 
 
-const useStyles = makeStyles((theme) => ({
-  mainGrid: {
-    marginTop: theme.spacing(3),
-  },
-}));
 
 
 const mainFeaturedPost = {
@@ -32,7 +26,7 @@ const mainFeaturedPost = {
 
 
 export default function Blog() {
-  const classes = useStyles();
+  
   var movies = useContext(Context).movies || [] as Film[]
 
   return (

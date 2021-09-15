@@ -1,8 +1,6 @@
-import { Avatar, Box, Divider, IconButton, ImageListItemBar, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, makeStyles, Paper, Typography } from '@material-ui/core';
+import { Avatar, IconButton, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, makeStyles, Paper, Typography } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { CardHeader } from '@material-ui/core';
 import { State } from '../../utils/types';
-import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 import { auth } from '../../utils/mybase';
 
 

@@ -6,7 +6,6 @@ import InfoIcon from '@material-ui/icons/Info';
 import { State } from "../../utils/types";
 import { useStyles } from "../../utils/style";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { auth } from "../../utils/mybase";
 import ConfirmDialog from "../ConfirmDialog";
 import { useState } from "react";
 
