@@ -21,20 +21,20 @@ import { auth } from '../../utils/mybase';
     return (
       <Dialog open={true} maxWidth="sm" fullWidth>
         <DialogTitle>Confirm the action</DialogTitle>
-        <Box position="absolute" top={0} right={0}>
-          <IconButton>
+        <Box position="absolute" top={0} right={0} onClick={()=>{prop.setOpen(false)}}>
+          <IconButton >
             <Close />
           </IconButton>
         </Box>
         <DialogContent>
-          <Typography>some message here</Typography>
+          <Typography>Are you sure want sign out?</Typography>
         </DialogContent>
         <DialogActions>
           <Button color="primary" variant="contained" onClick={()=>{prop.setOpen(false)}}>
             Cancel
           </Button>
           <Button color="secondary" variant="contained" onClick={()=>{auth.signOut();prop.setOpen(false)}}>
-            Confirm
+          Sign Out
           </Button>
         </DialogActions>
       </Dialog>

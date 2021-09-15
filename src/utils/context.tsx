@@ -1,7 +1,9 @@
 
 import React from 'react'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
 import "./mybase"
-
+import { firestore } from './mybase'
+import { Film } from './mybase'
 
 const films = [
     {
@@ -31,20 +33,20 @@ const films = [
 
 
 
-export interface Film{
-  name:string,
-  description:string,
-  imageSrc:string,
-  date:string,
-} 
+
 
 const useValue = () => {
-    const [movies, setMovies] = React.useState<Film[]>(films)
+    // const [movies, setMovies] = React.useState<Film[]>(films)
 
+    var [movies] = useCollectionData<Film>(firestore.collection("films").limit(15))
+
+    
+
+    
     return {
       
-      movies,
-      setMovies
+      
+        movies,
       
     }
 }

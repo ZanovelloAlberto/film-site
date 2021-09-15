@@ -18,21 +18,25 @@ firebase.initializeApp({
 })
 
 export const auth = firebase.auth();
+export const firestore = firebase.firestore()
 
 export const signInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider);
 }
 
-export const getMovie = ()=>{
+export interface Film{
+  name:string,
+  description:string,
+  imgSrc:string,
+  date:firebase.firestore.Timestamp,
+}
 
-  const firestore = firebase.firestore()
-  const messagesRef = firestore.collection('films');
-  const query = messagesRef.orderBy('name').limit(25);
-
-  const [film] = useCollectionData(query, { idField: 'id' });
-  return film
-  
+export interface Mark{
+    uid:string,
+    comment:string,
+    date:any,
+    vote:number
 
 }
 

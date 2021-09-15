@@ -8,6 +8,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
+import { Film } from '../../utils/mybase';
 
 const useStyles = makeStyles({
   card: {
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function FeaturedPost(props) {
+export default function FeaturedPost(props: { post: Film; }) {
   const classes = useStyles();
   const { post } = props;
 
@@ -35,7 +36,7 @@ export default function FeaturedPost(props) {
                 {post.name}
               </Typography>
               <Typography variant="subtitle1" color="textSecondary">
-                {post.date}
+                {post.date.toDate().toISOString().slice(0, 10)}
               </Typography>
               <Typography variant="subtitle1" paragraph>
                 {post.description}
@@ -46,7 +47,7 @@ export default function FeaturedPost(props) {
             </CardContent>
           </div>
           <Hidden xsDown>
-            <CardMedia className={classes.cardMedia} image={post.imageSrc} title={post.name} />
+            <CardMedia className={classes.cardMedia} image={post.imgSrc} title={post.name} />
           </Hidden>
         </Card>
       </CardActionArea>

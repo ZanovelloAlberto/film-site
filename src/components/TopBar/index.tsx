@@ -61,11 +61,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function TopBar() {
+const TopBar: React.FC<{}> = (props) => {
 
-
-
-    const classes = useStyles();
+    
+    
     const [open, setOpen] = React.useState(false);
 
     // setOpen(false)
@@ -87,7 +86,7 @@ export default function TopBar() {
 
                 {!open && <MenuIcon />}
                 </IconButton>
-                <Typography variant="h6" className={classes.title}>
+                <Typography variant="h6">
                     {/* {useContext(AppContext).currentPage} */}Niente
                 </Typography>
                 <Button color="inherit">Login</Button>
@@ -102,3 +101,4 @@ export default function TopBar() {
 
     )
 }
+export default TopBar

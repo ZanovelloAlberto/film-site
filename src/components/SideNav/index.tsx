@@ -1,5 +1,5 @@
 import { Divider, Drawer, Link, List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
-import MenuHeader from "../MenuHeader";
+import MenuHeader from "../NavHeader";
 import MovieIcon from '@material-ui/icons/Movie';
 import SettingsIcon from '@material-ui/icons/Settings';
 import InfoIcon from '@material-ui/icons/Info';
@@ -18,15 +18,16 @@ const elements = [
 
     },
     {
-        title: "About",
-        link: "/about",
-        icon: <InfoIcon />,
-    },
-    {
         title: "Settings",
         link: "/settings",
         icon: <SettingsIcon />
     },
+    {
+        title: "About",
+        link: "/about",
+        icon: <InfoIcon />,
+    },
+
 
 
 ]

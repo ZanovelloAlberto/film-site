@@ -18,7 +18,11 @@ import firebase from "firebase/app";
 import { Home } from "@material-ui/icons";
 import ReactHome from "./pages/ReactHome";
 import TopBar from "./components/TopBar";
-import { auth } from "./utils/mybase";
+import { auth, firestore } from "./utils/mybase";
+import { useContext } from "react";
+import { Context } from "./utils/context";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import AddMovie from "./pages/AddMovie";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -37,6 +41,10 @@ import { auth } from "./utils/mybase";
 
 export default function Hub() {
 
+  
+
+
+  
 
   const [user] = useAuthState(auth);
 
@@ -44,7 +52,8 @@ export default function Hub() {
   return (
 
 
-      <div>        
+      <div> 
+            
         {user ?
          (<Logged />)
         :
@@ -70,7 +79,8 @@ const Logged = () => {
       </Route>
       
     <Switch>
-      <Route path="/Movies"> 
+      <Route path="/Movies">
+
         <Movies  />
       </Route>
 
@@ -80,6 +90,10 @@ const Logged = () => {
 
       <Route path="/about">
         {/* <About /> */}
+      </Route>
+
+      <Route path="/add">
+        <AddMovie/>
       </Route>
 
       <Route>

@@ -7,7 +7,7 @@ import Container from '@material-ui/core/Container';
 import { Context } from '../../utils/context';
 import MainFeaturedPost from './FirstPost';
 import FeaturedPost from './Post';
-
+import { Film } from '../../utils/mybase';
 
 import Footer from '../../components/Footer';
 
@@ -28,29 +28,12 @@ const mainFeaturedPost = {
   imgText: 'main image description',
   linkText: 'Continue reading…',
 };
-const featuredPosts = [
-  {
-    title: 'Featured post',
-    date: 'Nov 12',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageText: 'Image Text',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageText: 'Image Text',
-  },
-];
+
 
 
 export default function Blog() {
   const classes = useStyles();
-  const movies = useContext(Context).movies
+  var movies = useContext(Context).movies || [] as Film[]
 
   return (
     <React.Fragment>
