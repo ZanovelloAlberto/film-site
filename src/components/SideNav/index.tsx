@@ -1,4 +1,4 @@
-import { Divider, Drawer, Link, List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import MenuHeader from "../NavHeader";
 import MovieIcon from '@material-ui/icons/Movie';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -9,28 +9,28 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ConfirmDialog from "../ConfirmDialog";
 import { useState } from "react";
 import { AddBox } from '@mui/icons-material';
-import { bn } from '../../utils/mybase'
+import { Link } from "react-router-dom";
 
 const elements = [
     {
         title: "Movies",
-        link: bn+"/#/movies",
+        link: "/movies",
         icon: <MovieIcon />,
 
     },
     {
         title: "Settings",
-        link: bn+"/#/settings",
+        link: "/settings",
         icon: <SettingsIcon />
     },
     {
         title: "About",
-        link: bn+"/#/about",
+        link: "/about",
         icon: <InfoIcon />,
     },
     {
         title: "Add Movie",
-        link: bn+"/#/addMovie",
+        link: "/addMovie",
         icon: <AddBox />,
     }
 
@@ -61,7 +61,7 @@ const SideNav = (prop: { open: State<boolean> }) => {
             <List>
                 {elements.map((v, i) => (
                     
-                    <Link  href={v.link}>
+                    <Link to={v.link}>
                         <ListItem button key={i + v.title}>
                             <ListItemIcon>{v.icon}</ListItemIcon>
                             <ListItemText primary={v.title} />
