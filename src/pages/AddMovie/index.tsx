@@ -79,7 +79,9 @@ export default function Checkout() {
     }
   }
 
-  
+  if(activeStep === steps.length){
+    
+  }
 
 
 

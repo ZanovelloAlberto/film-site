@@ -31,6 +31,10 @@ export interface Film{
   date:firebase.firestore.Timestamp | undefined,
 }
 
+
+// basename
+export const bn = "film-site/"
+
 export const Now = firebase.firestore.FieldValue.serverTimestamp
 
 export interface Mark{

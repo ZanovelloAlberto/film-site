@@ -9,27 +9,28 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ConfirmDialog from "../ConfirmDialog";
 import { useState } from "react";
 import { AddBox } from '@mui/icons-material';
+import { bn } from '../../utils/mybase'
 
 const elements = [
     {
         title: "Movies",
-        link: "/#/movies",
+        link: bn+"/#/movies",
         icon: <MovieIcon />,
 
     },
     {
         title: "Settings",
-        link: "/#/settings",
+        link: bn+"/#/settings",
         icon: <SettingsIcon />
     },
     {
         title: "About",
-        link: "/#/about",
+        link: bn+"/#/about",
         icon: <InfoIcon />,
     },
     {
         title: "Add Movie",
-        link: "/#/addMovie",
+        link: bn+"/#/addMovie",
         icon: <AddBox />,
     }
 
