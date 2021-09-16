@@ -9,9 +9,12 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AddressForm from './AddressForm';
-import PaymentForm from './PaymentForm';
-import Review from './Review';
+import Main from './Main';
+import AddImg from './AddImg';
+import Preview from './Preview';
+import { dbMovie, Film, Now } from '../../utils/mybase';
+import firebase from 'firebase';
+import { useState } from 'react';
 
 function Copyright() {
   return (
@@ -26,40 +29,66 @@ function Copyright() {
   );
 }
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = ['Add Movie', 'Add Image', 'Preview'];
 
-function getStepContent(step: number) {
-  switch (step) {
-    case 0:
-      return <AddressForm />;
-    case 1:
-      return <PaymentForm />;
-    case 2:
-      return <Review />;
-    default:
-      throw new Error('Unknown step');
-  }
-}
+
 
 const theme = createTheme();
+
+
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
 
-  const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
+  
+  const title = useState("")
+  const description = useState("initialState")
 
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
+  const vMain = {
+    title,
+    description,
+  }
+  const imgSrc = useState("")
+  // const useValue = () => {
+  //   // const [movies, setMovies] = React.useState<Film[]>(films)
+
+
+    
+  // } 
+
+  
+  const addMovie = {
+
+    imgSrc:imgSrc[0],
+    description:description[0],
+    name:title[0],
+    
+  } as Film
+
+
+  const getStepContent = (step: number) =>{
+    switch (step) {
+      case 0:
+        return <Main value={vMain}/>;
+      case 1:
+        return <AddImg value={imgSrc}/>;
+      case 2:
+        return <Preview value={addMovie}/>;
+      default:
+        throw new Error('Unknown step');
+    }
+  }
+
+  
+
+
 
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">
-            Checkout
+            Add Movie
           </Typography>
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
             {steps.map((label) => (
@@ -72,12 +101,13 @@ export default function Checkout() {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
+                  Movie have been added.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
+                  Your Movie number is #2001539. 
+                  We added your movie,and it will be avalible 
+                  clicking the following link <br></br>
+                  <Link href="/#/2001539"> Here </Link>
                 </Typography>
               </React.Fragment>
             ) : (
@@ -85,13 +115,13 @@ export default function Checkout() {
                 {getStepContent(activeStep)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
-                    <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+                    <Button onClick={()=>setActiveStep(activeStep - 1)} sx={{ mt: 3, ml: 1 }}>
                       Back
                     </Button>
                   )}
                   <Button
                     variant="contained"
-                    onClick={handleNext}
+                    onClick={()=>setActiveStep(activeStep + 1)}
                     sx={{ mt: 3, ml: 1 }}
                   >
                     {activeStep === steps.length - 1 ? 'Place order' : 'Next'}

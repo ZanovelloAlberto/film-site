@@ -8,24 +8,30 @@ import { useStyles } from "../../utils/style";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ConfirmDialog from "../ConfirmDialog";
 import { useState } from "react";
+import { AddBox } from '@mui/icons-material';
 
 const elements = [
     {
         title: "Movies",
-        link: "./movies",
+        link: "/#/movies",
         icon: <MovieIcon />,
 
     },
     {
         title: "Settings",
-        link: "./settings",
+        link: "/#/settings",
         icon: <SettingsIcon />
     },
     {
         title: "About",
-        link: "about",
+        link: "/#/about",
         icon: <InfoIcon />,
     },
+    {
+        title: "Add Movie",
+        link: "/#/addMovie",
+        icon: <AddBox />,
+    }
 
 
 
@@ -46,12 +52,14 @@ const SideNav = (prop: { open: State<boolean> }) => {
                 paper: classes.drawerPaper,
             }}
         >
+            
             <MenuHeader open={prop.open} />
 
             <Divider />
 
             <List>
                 {elements.map((v, i) => (
+                    
                     <Link  href={v.link}>
                         <ListItem button key={i + v.title}>
                             <ListItemIcon>{v.icon}</ListItemIcon>

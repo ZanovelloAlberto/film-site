@@ -3,6 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  HashRouter,
+  StaticRouter,
   
 } from "react-router-dom";
 import Movies from './pages/Blog'
@@ -19,6 +21,7 @@ import TopBar from "./components/TopBar";
 import { auth } from "./utils/mybase";
 
 import AddMovie from "./pages/AddMovie";
+import About from "./pages/About";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -44,17 +47,14 @@ export default function Hub() {
 
   const [user] = useAuthState(auth);
 
-  console.log(user ? "true" : "false")
+  var uno = user
   return (
 
 
       <div> 
             
-        {user ?
-         (<Logged />)
-        :
-        <Land />
-      }
+        {!uno ?<Land />:<Logged />}
+
       </div>
 
 
@@ -66,31 +66,21 @@ const Logged = () => {
   
   return (
 
+   
+
+    <HashRouter basename="film-site">
+       
 
 
-    <Router basename="/film-site">
+      <Route component={TopBar}/>
 
-      <Route>
-      <TopBar/>
-      </Route>
       
     <Switch>
-      <Route path="/Movies">
+      <Route path="/Movies" component={Movies}/>
+      <Route path="/settings" component={ReactHome}/>
+      <Route path="/about" component={About}/>
+      <Route path="/addMovie" component={AddMovie}/>
 
-        <Movies  />
-      </Route>
-
-      <Route path="/signIn">
-        <SignIn />
-      </Route>
-
-      <Route path="/about">
-        {/* <About /> */}
-      </Route>
-
-      <Route path="/add">
-        <AddMovie/>
-      </Route>
 
       <Route>
         <ReactHome/>
@@ -98,7 +88,7 @@ const Logged = () => {
     </Switch>
 
 
-    </Router>
+    </HashRouter>
 
 
 

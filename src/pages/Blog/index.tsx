@@ -5,10 +5,11 @@ import Container from '@material-ui/core/Container';
 
 import { Context } from '../../utils/context';
 import MainFeaturedPost from './FirstPost';
-import FeaturedPost from './Post';
+import Post from './Post';
 import { Film } from '../../utils/mybase';
 
 import Footer from '../../components/Footer';
+import Post2 from './Post2';
 
 
 
@@ -40,7 +41,7 @@ export default function Blog() {
           <MainFeaturedPost post={mainFeaturedPost} />
           <Grid container spacing={4}>
             {movies.map((v,i) => (
-              <FeaturedPost key={v.name} post={v} />
+              <Post2 key={v.name} post={v} />
             ))}
           </Grid>
               

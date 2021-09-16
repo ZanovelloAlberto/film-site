@@ -17,6 +17,8 @@ firebase.initializeApp({
 export const auth = firebase.auth();
 export const firestore = firebase.firestore()
 
+export const dbMovie = firestore.collection("films")
+
 export const signInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider);
@@ -26,8 +28,10 @@ export interface Film{
   name:string,
   description:string,
   imgSrc:string,
-  date:firebase.firestore.Timestamp,
+  date:firebase.firestore.Timestamp | undefined,
 }
+
+export const Now = firebase.firestore.FieldValue.serverTimestamp
 
 export interface Mark{
     uid:string,

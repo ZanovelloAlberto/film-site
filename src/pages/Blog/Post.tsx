@@ -22,7 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function FeaturedPost(props: { post: Film; }) {
+export default function Post(props: { post: Film; }) {
   const classes = useStyles();
   const { post } = props;
 
@@ -36,7 +36,7 @@ export default function FeaturedPost(props: { post: Film; }) {
                 {post.name}
               </Typography>
               <Typography variant="subtitle1" color="textSecondary">
-                {post.date.toDate().toISOString().slice(0, 10)}
+                {post.date?.toDate().toISOString().slice(0, 10)}
               </Typography>
               <Typography variant="subtitle1" paragraph>
                 {post.description}
@@ -55,6 +55,6 @@ export default function FeaturedPost(props: { post: Film; }) {
   );
 }
 
-FeaturedPost.propTypes = {
+Post.propTypes = {
   post: PropTypes.object,
 };
