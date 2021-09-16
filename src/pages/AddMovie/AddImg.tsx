@@ -10,7 +10,8 @@ import { Film } from '../../utils/mybase';
 import { State } from '../../utils/types';
 
 export default function AddImg(prop: { value: State<string> }) {
-  
+  fetch('https://source.unsplash.com/random')
+    .then((e)=>{prop.value[1](e.url)})
   return (
     <div>
       <Typography variant="h6" gutterBottom>
@@ -30,12 +31,10 @@ export default function AddImg(prop: { value: State<string> }) {
         <Grid item xs={12} md={6}>
           <Box
             component="img"
-            // sx={{
-            //   height: 233,
-            //   width: 350,
-            //   maxHeight: { xs: 233, md: 167 },
-            //   maxWidth: { xs: 350, md: 250 },
-            // }}
+            sx={{
+              maxHeight: { xs: 233, md: 167 },
+              maxWidth: { xs: 350, md: 250 },
+            }}
             alt="Set a valid image url"
             src={prop.value[0]}
           />

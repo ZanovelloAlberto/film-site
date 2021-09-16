@@ -33,7 +33,7 @@ export default function Post(props: { post: Film; }) {
           <div className={classes.cardDetails}>
             <CardContent>
               <Typography component="h2" variant="h5">
-                {post.name}
+                {post.title}
               </Typography>
               <Typography variant="subtitle1" color="textSecondary">
                 {post.date?.toDate().toISOString().slice(0, 10)}
@@ -47,7 +47,7 @@ export default function Post(props: { post: Film; }) {
             </CardContent>
           </div>
           <Hidden xsDown>
-            <CardMedia className={classes.cardMedia} image={post.imgSrc} title={post.name} />
+            <CardMedia className={classes.cardMedia} image={post.src} title={post.title} />
           </Hidden>
         </Card>
       </CardActionArea>

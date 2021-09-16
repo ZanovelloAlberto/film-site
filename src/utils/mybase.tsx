@@ -17,7 +17,7 @@ firebase.initializeApp({
 export const auth = firebase.auth();
 export const firestore = firebase.firestore()
 
-export const dbMovie = firestore.collection("films")
+export const dbMovie = firestore.collection("movies")
 
 export const signInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -25,15 +25,15 @@ export const signInWithGoogle = () => {
 }
 
 export interface Film{
-  name:string,
+
+  title:string,
   description:string,
-  imgSrc:string,
-  date:firebase.firestore.Timestamp | undefined,
+  src:string,
+  date:any,
+  id:string
 }
 
 
-// basename
-export const bn = "film-site/"
 
 export const Now = firebase.firestore.FieldValue.serverTimestamp
 
@@ -42,6 +42,14 @@ export interface Mark{
     comment:string,
     date:any,
     vote:number
+
+}
+
+
+export const Send = async (v:Film) => {
+  
+
+  await dbMovie.add(v)
 
 }
 

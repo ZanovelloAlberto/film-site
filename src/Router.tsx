@@ -22,6 +22,7 @@ import { auth } from "./utils/mybase";
 
 import AddMovie from "./pages/AddMovie";
 import About from "./pages/About";
+import Movie from "./pages/Movie";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -68,7 +69,7 @@ const Logged = () => {
 
    
 
-    <HashRouter basename="film-site">
+    <HashRouter>
        
 
 
@@ -80,6 +81,7 @@ const Logged = () => {
       <Route path="/settings" component={ReactHome}/>
       <Route path="/about" component={About}/>
       <Route path="/addMovie" component={AddMovie}/>
+      <Route path="/Movie" component={Movie}/>
 
 
       <Route>

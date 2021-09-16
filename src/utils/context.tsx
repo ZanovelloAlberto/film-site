@@ -2,7 +2,7 @@
 import React from 'react'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import "./mybase"
-import { firestore } from './mybase'
+import { dbMovie, firestore } from './mybase'
 import { Film } from './mybase'
 
 
@@ -10,7 +10,10 @@ import { Film } from './mybase'
 const useValue = () => {
     // const [movies, setMovies] = React.useState<Film[]>(films)
 
-    var [movies] = useCollectionData<Film>(firestore.collection("films").limit(15))
+    var [movies] = useCollectionData<Film>(dbMovie.limit(15), { idField: 'id' })
+
+    console.log(movies);
+    
     
     return {
       

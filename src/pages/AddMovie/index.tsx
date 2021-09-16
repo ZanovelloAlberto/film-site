@@ -15,6 +15,8 @@ import Preview from './Preview';
 import { dbMovie, Film, Now } from '../../utils/mybase';
 import firebase from 'firebase';
 import { useState } from 'react';
+import Confirm from './Confirm';
+
 
 function Copyright() {
   return (
@@ -38,17 +40,25 @@ const theme = createTheme();
 
 
 export default function Checkout() {
+
+
+
+
+
+
   const [activeStep, setActiveStep] = React.useState(0);
 
   
-  const title = useState("")
-  const description = useState("initialState")
+  const title = useState("Title")
+  const description = useState("Description")
 
   const vMain = {
     title,
     description,
   }
-  const imgSrc = useState("")
+
+
+  const imgSrc = useState("https://source.unsplash.com/random")
   // const useValue = () => {
   //   // const [movies, setMovies] = React.useState<Film[]>(films)
 
@@ -59,9 +69,9 @@ export default function Checkout() {
   
   const addMovie = {
 
-    imgSrc:imgSrc[0],
+    src:imgSrc[0],
     description:description[0],
-    name:title[0],
+    title:title[0],
     
   } as Film
 
@@ -75,13 +85,33 @@ export default function Checkout() {
       case 2:
         return <Preview value={addMovie}/>;
       default:
-        throw new Error('Unknown step');
+        return <p>case 3</p>
     }
   }
 
-  if(activeStep === steps.length){
-    
-  }
+  var Commander = (
+    <React.Fragment>
+      {getStepContent(activeStep)}
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        {activeStep !== 0 && (
+          <Button onClick={()=>setActiveStep(activeStep - 1)} sx={{ mt: 3, ml: 1 }}>
+            Back
+          </Button>
+        )}
+        <Button
+          variant="contained"
+          onClick={()=>setActiveStep(activeStep + 1)}
+          sx={{ mt: 3, ml: 1 }}
+        >
+          {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+        </Button>
+      </Box>
+    </React.Fragment>
+  )
+
+
+  
+
 
 
 
@@ -100,37 +130,7 @@ export default function Checkout() {
             ))}
           </Stepper>
           <React.Fragment>
-            {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography variant="h5" gutterBottom>
-                  Movie have been added.
-                </Typography>
-                <Typography variant="subtitle1">
-                  Your Movie number is #2001539. 
-                  We added your movie,and it will be avalible 
-                  clicking the following link <br></br>
-                  <Link href="/#/2001539"> Here </Link>
-                </Typography>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                {getStepContent(activeStep)}
-                <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                  {activeStep !== 0 && (
-                    <Button onClick={()=>setActiveStep(activeStep - 1)} sx={{ mt: 3, ml: 1 }}>
-                      Back
-                    </Button>
-                  )}
-                  <Button
-                    variant="contained"
-                    onClick={()=>setActiveStep(activeStep + 1)}
-                    sx={{ mt: 3, ml: 1 }}
-                  >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                  </Button>
-                </Box>
-              </React.Fragment>
-            )}
+            {activeStep === steps.length? <Confirm val={addMovie}/>:Commander}
           </React.Fragment>
         </Paper>
         <Copyright />
@@ -138,3 +138,6 @@ export default function Checkout() {
     </ThemeProvider>
   );
 }
+
+
+

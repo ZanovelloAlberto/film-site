@@ -41,7 +41,7 @@ export default function Blog() {
           <MainFeaturedPost post={mainFeaturedPost} />
           <Grid container spacing={4}>
             {movies.map((v,i) => (
-              <Post2 key={v.name} post={v} />
+              <Post key={v.title} post={v} />
             ))}
           </Grid>
               
