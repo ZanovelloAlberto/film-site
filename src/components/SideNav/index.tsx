@@ -12,18 +12,18 @@ import { useState } from "react";
 const elements = [
     {
         title: "Movies",
-        link: "/movies",
+        link: "./movies",
         icon: <MovieIcon />,
 
     },
     {
         title: "Settings",
-        link: "/settings",
+        link: "./settings",
         icon: <SettingsIcon />
     },
     {
         title: "About",
-        link: "/about",
+        link: "about",
         icon: <InfoIcon />,
     },
 
@@ -52,7 +52,7 @@ const SideNav = (prop: { open: State<boolean> }) => {
 
             <List>
                 {elements.map((v, i) => (
-                    <Link href={v.link}>
+                    <Link  href={v.link}>
                         <ListItem button key={i + v.title}>
                             <ListItemIcon>{v.icon}</ListItemIcon>
                             <ListItemText primary={v.title} />

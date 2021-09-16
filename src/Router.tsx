@@ -68,7 +68,7 @@ const Logged = () => {
 
 
 
-    <Router>
+    <Router basename="/film-site">
 
       <Route>
       <TopBar/>
