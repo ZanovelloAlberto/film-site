@@ -4,7 +4,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
-import Post from '../Blog/Post';
+import Post from '../Movies/Post';
 import { Film } from '../../utils/mybase';
 
 

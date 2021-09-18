@@ -10,8 +10,9 @@ import ConfirmDialog from "../ConfirmDialog";
 import { useState } from "react";
 import { AddBox } from '@mui/icons-material';
 import { Link } from "react-router-dom";
+import { Box } from "@mui/system";
 
-const elements = [
+export const pages = [
     {
         title: "Movies",
         link: "/movies",
@@ -53,31 +54,31 @@ const SideNav = (prop: { open: State<boolean> }) => {
                 paper: classes.drawerPaper,
             }}
         >
-            
+
             <MenuHeader open={prop.open} />
 
             <Divider />
 
             <List>
-                {elements.map((v, i) => (
-                    
-                    <Link to={v.link}>
-                        <ListItem button key={i + v.title}>
+                {pages.map((v, i) => (
+
+                    // <Link to={v.link} style={{textDecoration: 'none'}}>
+                        <ListItem button key={i} onClick={()=>window.location.hash = v.link} >
                             <ListItemIcon>{v.icon}</ListItemIcon>
                             <ListItemText primary={v.title} />
                         </ListItem>
-                    </Link>
+                    // </Link>
                 ))}
             </List>
 
             <Divider />
 
-            {Dialog && <ConfirmDialog setOpen={setDialog}/>}
-            <ListItem button key="logOut11" onClick={()=>{setDialog(true)}}>
-                            <ListItemIcon><ExitToAppIcon/></ListItemIcon>
-                            <ListItemText primary="Sign Out" />
+            {Dialog && <ConfirmDialog setOpen={setDialog} />}
+            <ListItem button key="logOut11" onClick={() => { setDialog(true) }}>
+                <ListItemIcon><ExitToAppIcon /></ListItemIcon>
+                <ListItemText primary="Sign Out" />
             </ListItem>
-            
+
         </Drawer>
 
 

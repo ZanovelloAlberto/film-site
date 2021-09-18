@@ -1,21 +1,25 @@
-import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import MuiDrawer from '@mui/material/Drawer';
+
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 import Box from '@mui/material/Box';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
+
 import Typography from '@mui/material/Typography';
 
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
-
-import Chart from './Chart';
 import Deposits from './Deposits';
-import Orders from './Orders';
+import { Film, Mark } from '../../utils/mybase';
+import { Context } from '../../utils/context';
+import { useContext } from 'react';
+import { IconButton } from '@material-ui/core';
+import { AddComment } from '@material-ui/icons';
+import Rate from './Rate';
+
+import { useState } from 'react'
+import Write from './Write';
 
 function Copyright(props: any) {
   return (
@@ -31,21 +35,54 @@ function Copyright(props: any) {
 }
 
 
-
+interface Bo {
+  match: any,
+  location: any,
+  history: any,
+}
 
 
 const mdTheme = createTheme();
 
-function DashboardContent() {
+
+const Movie = (prop: { location: { search: string, hash: string } }) => {
 
   // prop:{id:string}
 
+  console.log(prop.location.search);
+  const c = prop.location.search.substring(1)
+  const v = useContext(Context).movies
+  var res
+
+  if (v) {
+    for (let index = 0; index < v.length; index++) {
+      if (v[index].id === c) {
+        res = v[index]
+      }
+    }
+  }
+
+
+
+
+
+  return (
+    <div>
+      {res ? <Main v={res} /> : <p>Error page not Found</p>}
+    </div>
+  )
+}
+
+export default Movie
+
+
+const Main = (prop: { v: Film }) => {
 
   return (
     <ThemeProvider theme={mdTheme}>
-      <Box>
+      <Box display="contents">
 
-        
+
         <Box
           component="main"
           sx={{
@@ -54,7 +91,6 @@ function DashboardContent() {
                 ? theme.palette.grey[100]
                 : theme.palette.grey[900],
             flexGrow: 1,
-            height: '100vh',
             overflow: 'auto',
           }}
         >
@@ -66,42 +102,56 @@ function DashboardContent() {
                 <Paper
                   sx={{
                     p: 2,
-                    display: 'flex',
+                    // backgroundOrigin: prop.v.src,
                     flexDirection: 'column',
                     height: 240,
                   }}
+                  style={{ backgroundImage: `url(${prop.v.src})` }}
                 >
-                  <Chart />
+                  <Typography component="h2" variant="h6" color="primary" gutterBottom>
+                    {/* {prop.v.title} */}
+                  </Typography>
                 </Paper>
               </Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Deposits />
-                </Paper>
+
+
+              {/* Header */}
+              <Deposits avgVote={8} date="15 March, 2019" />
+
+
+              
+              <Grid item xs={2}>
+                <Typography variant="h4" marginLeft="30px">
+                  Comments
+                </Typography>
               </Grid>
-              {/* Recent Orders */}
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders />
-                </Paper>
-              </Grid>
+              <AddIco/>
+              
+              <Rate v={prop.v} />
             </Grid>
+
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>
       </Box>
-    </ThemeProvider>
-  );
+    </ThemeProvider >
+  )
 }
 
-export default function Dashboard() {
-  return <DashboardContent />;
+
+const AddIco = () => {
+
+  const [write, setWrite] = useState(false)
+  
+  return (
+          
+          <Grid item xs={2}>
+                <IconButton onClick={() => { setWrite(true) }}>
+                  <AddComment />
+                  <Write v={[write,setWrite]}/>
+                </IconButton>
+            </Grid>
+  )
+
 }
+

@@ -7,7 +7,7 @@ import {
   StaticRouter,
   
 } from "react-router-dom";
-import Movies from './pages/Blog'
+import Movies from './pages/Movies'
 import SignIn from "./pages/SignIn";
 
 
@@ -23,6 +23,7 @@ import { auth } from "./utils/mybase";
 import AddMovie from "./pages/AddMovie";
 import About from "./pages/About";
 import Movie from "./pages/Movie";
+import { Explore } from "@material-ui/icons";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -65,6 +66,7 @@ export default function Hub() {
 
 const Logged = () => {
   
+  
   return (
 
    
@@ -82,10 +84,15 @@ const Logged = () => {
       <Route path="/about" component={About}/>
       <Route path="/addMovie" component={AddMovie}/>
       <Route path="/Movie" component={Movie}/>
+      <Route path="/Explore" component={Explore}/>
+
+      {/* <Route path="/Movie" >
+        <Movie/>
+      </Route> */}
 
 
       <Route>
-        <ReactHome/>
+        <Explore/>
       </Route>
     </Switch>
 

@@ -1,30 +1,9 @@
-import { Avatar, IconButton, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, makeStyles, Paper, Typography } from '@material-ui/core';
+import { Avatar, IconButton, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, makeStyles, Paper, Typography } from '@mui/material';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { State } from '../../utils/types';
 import { auth } from '../../utils/mybase';
 
 
-const useStyles = makeStyles((theme) => ({
-
-    hide: {
-        display: 'none',
-    },
-    drawerHeader: {
-        display: 'flex',
-        alignItems: 'center',
-        padding: theme.spacing(0, 1),
-        // necessary for content to be below app bar
-        ...theme.mixins.toolbar,
-        justifyContent: 'flex-end',
-
-    },
-    drawer: {
-        [theme.breakpoints.up('sm')]: {
-            width: 40,
-            flexShrink: 0,
-        },
-    }
-}))
 
 
 const MenuHeader = (prop: { open: State<boolean> }) => {
@@ -42,7 +21,7 @@ const MenuHeader = (prop: { open: State<boolean> }) => {
         
     }  
 
-    const classes = useStyles()
+
     return (
 
 

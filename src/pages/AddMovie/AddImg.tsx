@@ -42,7 +42,7 @@ export default function AddImg(prop: { value: State<string> }) {
         <Grid item xs={12}>
           <FormControlLabel
             control={<Checkbox color="secondary" name="saveCard" value="yes" />}
-            label="Checkbox causuale"
+            label="Checkbox casuale"
           />
         </Grid>
       </Grid>

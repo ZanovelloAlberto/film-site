@@ -28,7 +28,7 @@ export default function Post(props: { post: Film; }) {
 
   return (
     <Grid item xs={12} md={6}>
-      <CardActionArea component="a" href="#">
+      <CardActionArea component="a" href={"#Movie/?"+post.id}>
         <Card className={classes.card}>
           <div className={classes.cardDetails}>
             <CardContent>

@@ -9,7 +9,7 @@ import {
     Box,
     IconButton,
     Typography,
-  } from '@material-ui/core';
+  } from '@mui/material';
   import { Close } from '@material-ui/icons';
 
 import { auth } from '../../utils/mybase';
@@ -30,10 +30,10 @@ import { auth } from '../../utils/mybase';
           <Typography>Are you sure want sign out?</Typography>
         </DialogContent>
         <DialogActions>
-          <Button color="primary" variant="contained" onClick={()=>{prop.setOpen(false)}}>
+          <Button color="warning" variant="contained" onClick={()=>{prop.setOpen(false)}}>
             Cancel
           </Button>
-          <Button color="secondary" variant="contained" onClick={()=>{auth.signOut();prop.setOpen(false)}}>
+          <Button color="success" variant="contained" onClick={()=>{auth.signOut();prop.setOpen(false)}}>
           Sign Out
           </Button>
         </DialogActions>

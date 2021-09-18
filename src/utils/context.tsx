@@ -1,6 +1,8 @@
 
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
+import { Link } from 'react-router-dom'
+import { pages } from '../components/SideNav'
 import "./mybase"
 import { dbMovie, firestore } from './mybase'
 import { Film } from './mybase'
@@ -11,15 +13,20 @@ const useValue = () => {
     // const [movies, setMovies] = React.useState<Film[]>(films)
 
     var [movies] = useCollectionData<Film>(dbMovie.limit(15), { idField: 'id' })
+    const [page, setPage] = useState(pages[0] as PageLink)
 
-    console.log(movies);
-    
-    
+
+
+
     return {
-      
-      
+
+        // page status
+        page,
+        setPage,
+
+        // 
         movies,
-      
+
     }
 }
 
@@ -31,6 +38,18 @@ export const ContextProvider: React.FC<{}> = (props) => {
             {props.children}
         </Context.Provider>
     )
+}
+
+export interface PageLink {
+    title: string,
+    link: string
+}
+export const OpenPage = (v: PageLink) => {
+    // set Context page,
+    useContext(Context).setPage(v)
+
+    // set location
+    window.location.hash = v.link
 }
 
 

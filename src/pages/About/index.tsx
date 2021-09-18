@@ -1,9 +1,9 @@
-import Post from "../Blog/Post2";
+import Post from "../Movies/Post2";
 
 
 import React, { useEffect, useState } from 'react'
 import { Film } from "../../utils/mybase";
-import { Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import { Box } from "@mui/system";
 
@@ -17,23 +17,12 @@ export default function About() {
 
 
     return(
-        <div>
-            <Grid container spacing={3}>
-                <Grid item xs={12} md={1}></Grid>
-                <Grid item xs={12} md={11}>
-                    <Box sx={{
-                        bgcolor: '#bfc2b6',
-                        padding: "30px",
-                        margin: "50px",
-                        marginInline: "100px"
 
+        
+        <Container maxWidth="lg">
 
-                    }}>
                         <ReactMarkdown>{content}</ReactMarkdown>
-                    </Box>
-                </Grid>
-            </Grid>
             {/* <Post post={{} as Film}/> */}
-        </div>
+        </Container>
     )
 }

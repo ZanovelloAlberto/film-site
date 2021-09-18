@@ -31,6 +31,7 @@ export interface Film{
   src:string,
   date:any,
   id:string
+  marks?: Mark[]
 }
 
 
@@ -51,6 +52,15 @@ export const Send = async (v:Film) => {
 
   await dbMovie.add(v)
 
+}
+
+export const SetMark = (id:string) =>{
+  
+}
+
+
+export const GetMarks = (id:string) =>{
+  
 }
 
 
