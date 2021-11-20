@@ -1,7 +1,7 @@
 # This is a basic workflow that is manually triggered
 name: Build and Deploy
 
-on: [event_dispach]
+on: [workflow_dispatch]
 
 jobs:
   build-and-deploy:
