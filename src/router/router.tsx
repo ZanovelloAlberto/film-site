@@ -1,3 +1,6 @@
+import { isAuth } from "../context/firebase/static";
+import About from "../pages/about";
+import { Login } from "../pages/login";
 
 
 
@@ -5,14 +8,49 @@
 
 
 
+export default function Hub() {
 
-const Router = () =>  {
-    
     return (
-        <>
-            
+        <> 
+          {isAuth() ?<About />:<Login />}
         </>
     )
-}
+  }
+  
+  const Logged = () => {
+    
+    
+    return (
+        
+        
+      <HashRouter>
 
-export default Router
+        <Route component={TopBar}/>
+  
+        
+      <Switch>
+        <Route path="/Movies" component={Movies}/>
+        <Route path="/settings" component={ReactHome}/>
+        <Route path="/about" component={About}/>
+        <Route path="/addMovie" component={AddMovie}/>
+        <Route path="/Movie" component={Movie}/>
+        <Route path="/Explore" component={Explore}/>
+  
+        {/* <Route path="/Movie" >
+          <Movie/>
+        </Route> */}
+  
+  
+        <Route>
+          <Explore/>
+        </Route>
+      </Switch>
+  
+  
+      </HashRouter>
+  
+  
+  
+  
+    )
+  }

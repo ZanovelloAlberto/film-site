@@ -5,10 +5,6 @@ import { useState } from "react"
 
 
 
-export const signInWithGoogle = () => {
-    // const provider = new firebase.auth.GoogleAuthProvider();
-    // auth.signInWithPopup(provider);
-  }
 
 
 const useValue = () => {
