@@ -1,10 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { ContextProvider } from './context';
+import { FirebaseContextProvider } from './context/firebase';
+import { Core } from './core';
 
 ReactDOM.render(
   <React.StrictMode>
-    <p> ho preso le mie medicine </p>
+    <ContextProvider>
+      <FirebaseContextProvider>
+        <Core/>
+      </FirebaseContextProvider>
+    </ContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
