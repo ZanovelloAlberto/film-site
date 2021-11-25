@@ -1,4 +1,7 @@
-import { isAuth } from "../context/firebase/static";
+import { Button } from "@mui/material";
+import { getAuth } from "firebase/auth";
+import { HashRouter, Link, Route, Router, Routes } from "react-router-dom";
+import { isAuth } from "../firebase/static";
 import About from "../pages/about";
 import { Login } from "../pages/login";
 
@@ -8,49 +11,47 @@ import { Login } from "../pages/login";
 
 
 
-export default function Hub() {
+export default function uno() {
 
-    return (
-        <> 
-          {isAuth() ?<About />:<Login />}
-        </>
-    )
-  }
-  
-  const Logged = () => {
-    
-    
-    return (
-        
-        
+  console.log(isAuth());
+
+  return (
+    <>
+      <Login />
+    </>
+  )
+}
+
+const Logged = () => {
+
+
+  return (
+    <>
+      <Button
+        onClick={() => {
+          getAuth().signOut()
+          console.log(getAuth());
+          
+        }}
+        type="submit"
+
+        variant="contained"
+        color="primary"
+      >
+        Sign Out
+      </Button>
+
       <HashRouter>
 
-        <Route component={TopBar}/>
-  
-        
-      <Switch>
-        <Route path="/Movies" component={Movies}/>
-        <Route path="/settings" component={ReactHome}/>
-        <Route path="/about" component={About}/>
-        <Route path="/addMovie" component={AddMovie}/>
-        <Route path="/Movie" component={Movie}/>
-        <Route path="/Explore" component={Explore}/>
-  
-        {/* <Route path="/Movie" >
-          <Movie/>
-        </Route> */}
-  
-  
-        <Route>
-          <Explore/>
-        </Route>
-      </Switch>
-  
-  
+        <Routes>
+          <Route path="/" element={<About />}>
+            <Route index element={<></>} />
+            <Route path="teams" element={<></>}>
+              <Route path=":teamId" element={<></>} />
+            </Route>
+          </Route>
+        </Routes>
       </HashRouter>
-  
-  
-  
-  
-    )
-  }
+    </>
+  )
+}

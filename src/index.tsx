@@ -1,17 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ContextProvider } from './context';
-import { FirebaseContextProvider } from './context/firebase';
+import { FirebaseContextProvider } from './firebase';
 import { Core } from './core';
 
 ReactDOM.render(
-  <React.StrictMode>
     <ContextProvider>
       <FirebaseContextProvider>
         <Core/>
       </FirebaseContextProvider>
     </ContextProvider>
-  </React.StrictMode>,
+  ,
   document.getElementById('root')
 );
 
