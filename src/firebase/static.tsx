@@ -20,11 +20,6 @@ export const signInWithGoogle = (auth : Auth) => {
     signInWithPopup(auth,provider);
 }
 
-export const isAuth = () => {
-  
-  return false
-
-}
 
 
 

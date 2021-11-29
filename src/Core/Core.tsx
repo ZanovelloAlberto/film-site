@@ -1,15 +1,17 @@
 import { Button, TextField, Typography } from "@mui/material"
 import { getAuth, signOut } from "firebase/auth"
-import { useState } from "react"
-import { auth, isAuth, signInWithGoogle } from "../firebase/static"
+import { useContext, useState } from "react"
+import { firebaseContext } from "../firebase/firebase"
+import { auth, signInWithGoogle } from "../firebase/static"
+
 
 const Core = () =>  {
-    const [auth, setAuth] = useState(getAuth())
+    const {currentUser} = useContext(firebaseContext)
     return (
 
         <>
-            <Typography>{auth.currentUser?.email}</Typography>
-            {isAuth() == false? <Button onClick={()=> signInWithGoogle(auth)}>Sign In</Button> 
+            <Typography>{currentUser?.email}</Typography>
+            {!currentUser? <Button onClick={()=> signInWithGoogle(auth)}>Sign In</Button> 
             :
              <Button onClick={()=>signOut(auth)}>Sign Out</Button>}
         </>
