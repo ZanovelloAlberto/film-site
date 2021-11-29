@@ -6,15 +6,12 @@ import { useState } from "react"
 
 
 const useValue = () => {
-    // const [movies, setMovies] = React.useState<Film[]>(films)
-
 
     const [state, setState] = useState(true)
 
 
     return {
 
-        // page status
         state,
         setState
 

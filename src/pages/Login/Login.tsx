@@ -1,7 +1,6 @@
 import { Button, Grid, Paper, Typography } from "@mui/material";
-import { getAuth } from "firebase/auth";
-import { useState } from "react";
-import { signInWithGoogle } from "../../firebase/static";
+import { useEffect } from "react";
+import { auth, signInWithGoogle } from "../../firebase/static";
 
 
 
@@ -9,11 +8,13 @@ import { signInWithGoogle } from "../../firebase/static";
 
 
 const Login = () => {
-    
+
+    useEffect(() => {
+      console.log(auth.currentUser?.email)
+    }, [auth.currentUser])
     // const {signInWithGoogle} = useContext(Context)
-    const [auth, setAuth] = useState(getAuth())
     return (
-          <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square maxWidth="md">
               <Typography component="h1" variant="h5">
                 {auth.currentUser?.email || "nothing"} 
               </Typography>

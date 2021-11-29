@@ -2,14 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ContextProvider } from './context';
 import { FirebaseContextProvider } from './firebase';
-import { Core } from './core';
+import { Core } from './Core';
 
 ReactDOM.render(
-    <ContextProvider>
-      <FirebaseContextProvider>
-        <Core/>
-      </FirebaseContextProvider>
-    </ContextProvider>
+  (
+    //  <ContextProvider>
+    <FirebaseContextProvider>
+      <Core />
+    </FirebaseContextProvider>
+    //   </ContextProvider>
+  )
   ,
   document.getElementById('root')
 );

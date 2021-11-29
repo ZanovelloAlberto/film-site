@@ -1,5 +1,7 @@
+import { getAuth } from "firebase/auth"
 import React from "react"
 import { useState } from "react"
+import { auth } from "./static"
 
 
 
@@ -9,17 +11,9 @@ import { useState } from "react"
 
 const useValue = () => {
     
-    // const [movies, setMovies] = React.useState<Film[]>(films)
-
-
-    const [state, setState] = useState(true)
-
-
+    const [auth, setAuth] = useState(getAuth())
     return {
 
-        // page status
-        state,
-        setState
 
     }
 }
