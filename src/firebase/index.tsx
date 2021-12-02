@@ -1,1 +1,1 @@
-export {FirebaseContextProvider,firebaseContext as FirebaseContext  } from "./firebase"
+export {FirebaseContextProvider,firebaseContext } from "./firebaseContext"

@@ -1,1 +1,1 @@
-export {Context, ContextProvider} from "./app"
+export {AppContextProvider,appContext} from "./appContext"

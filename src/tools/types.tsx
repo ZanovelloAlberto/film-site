@@ -1,3 +1,5 @@
+import { WindowOutlined } from "@mui/icons-material"
+import { type } from "os"
 
 declare global {
     interface Array<T> {
@@ -9,7 +11,10 @@ Array.prototype.remove = function <T>(o:T) {
     this.push(o)
     return this
 }
+export type State<T> = [T, React.Dispatch<React.SetStateAction<T>>]
 
 
-export type State<T> =  [T, React.Dispatch<React.SetStateAction<T>>]
+
+
+
 

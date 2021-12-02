@@ -13,11 +13,14 @@ export const app = initializeApp({
 })
 
 export const auth = getAuth(app)
-auth.onAuthStateChanged((a)=>console.log(a?.email));
 
-export const signInWithGoogle = (auth : Auth) => {
+export const signInWithGoogle = () => {
     let provider = new GoogleAuthProvider();
-    signInWithPopup(auth,provider);
+    signInWithPopup(getAuth(),provider);
+}
+
+export const signOut = () => {
+  getAuth().signOut()
 }
 
 

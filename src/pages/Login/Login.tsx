@@ -1,5 +1,6 @@
 import { Button, Grid, Paper, Typography } from "@mui/material";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { firebaseContext } from "../../firebase";
 import { auth, signInWithGoogle } from "../../firebase/static";
 
 
@@ -12,17 +13,16 @@ const Login = () => {
     useEffect(() => {
       console.log(auth.currentUser?.email)
     }, [auth.currentUser])
-    // const {signInWithGoogle} = useContext(Context)
+    const {currentUser} = useContext(firebaseContext)
     return (
-          <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square maxWidth="md">
+          <Grid item xs={12} sm={8} md={5}>
               <Typography component="h1" variant="h5">
-                {auth.currentUser?.email || "nothing"} 
+                {currentUser?.email || "nothing"} 
               </Typography>
               <br/>
               <Button
-                  onClick={()=>signInWithGoogle(auth)}
+                  onClick={signInWithGoogle}
                   type="submit"
-                  
                   variant="contained"
                   color="primary"
                 >
@@ -30,15 +30,6 @@ const Login = () => {
                 </Button>
 
 
-                <Button
-                  onClick={()=>auth.signOut()}
-                  type="submit"
-                  
-                  variant="contained"
-                  color="primary"
-                >
-                  Sign Out
-                </Button>
               
           </Grid>
       )
