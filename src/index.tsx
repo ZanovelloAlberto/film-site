@@ -2,15 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContextProvider } from './context';
 import { FirebaseContextProvider } from './firebase';
-import Main from './pages/Router';
+import App from './App';
 
 ReactDOM.render(
   (
-     <AppContextProvider>
-    <FirebaseContextProvider>
-      <Main />
-    </FirebaseContextProvider>
-      </AppContextProvider>
+    <AppContextProvider>
+      <FirebaseContextProvider>
+        <App />
+      </FirebaseContextProvider>
+    </AppContextProvider>
   )
   ,
   document.getElementById('root')
