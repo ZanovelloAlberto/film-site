@@ -1,5 +1,3 @@
-import { WindowOutlined } from "@mui/icons-material"
-import { type } from "os"
 
 declare global {
     interface Array<T> {

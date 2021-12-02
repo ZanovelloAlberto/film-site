@@ -16,14 +16,9 @@ import { useContext } from 'react';
 import { appContext } from '../../context';
 
 const TopBar = () => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const {setSidebarOpen} = useContext(appContext)
 
   const {currentUser} = useContext(firebaseContext)
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -50,7 +45,6 @@ const TopBar = () => {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={()=> setSidebarOpen(true)}
                 color="inherit"
               >
                 <AccountCircle />

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { deflateSync } from "zlib";
+import Sidebar from "../components/Sidebar/Sidebar";
 import TopBar from "../components/TopBar/TopBar";
 import { firebaseContext } from "../firebase";
 import { Login } from "./Login";
@@ -14,12 +15,11 @@ const Router = () => {
   return (
     <>
       {currentUser ? <>
-      <TopBar/>
       
       <HashRouter>
 
         <Routes>
-          <Route path="/" element={<TopBar />}>
+          <Route path="/" element={<><TopBar /><Sidebar/></>}>
             <Route index element={<></>} />
             <Route path="teams" element={<></>}>
               <Route path=":teamId" element={<></>} />

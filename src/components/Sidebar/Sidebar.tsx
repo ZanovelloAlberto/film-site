@@ -1,20 +1,40 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import { List, ListItemIcon, Divider, ListItemText, Drawer } from '@mui/material';
+import { Settings, Movie, Info, AddBox, ExitToApp } from '@mui/icons-material';
 import { useContext, useState } from 'react';
-import { appContext } from '../../context';
+import { auth } from '../../firebase/static';
+import {AvatarCard} from '../AvatarCard';
+import { ConfirmDialog } from 'components/ConfirmDialog';
+import { ListItem } from '@mui/material';
+import { appContext } from 'context';
+import { firebaseContext } from 'firebase';
+const pages = [
+  {
+    title: "Movies",
+    link: "/movies",
+    icon: <Movie />,
 
+  },
+  {
+    title: "Settings",
+    link: "/settings",
+    icon: <Settings />
+  },
+  {
+    title: "About",
+    link: "/about",
+    icon: <Info />,
+  },
+  {
+    title: "Add Movie",
+    link: "/addMovie",
+    icon: <AddBox />,
+  }]
 
 export default function Sidebar() {
-const {sidebarOpen,setSidebarOpen} = useContext(appContext)
+  const { sidebarOpen, setSidebarOpen } = useContext(appContext)
+  const [openDialog, setOpenDialog] = useState(false)
+  const {currentUser} = useContext(firebaseContext)
+
   return (
     <div>
       <Drawer
@@ -22,29 +42,45 @@ const {sidebarOpen,setSidebarOpen} = useContext(appContext)
         open={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
       >
-        <Box>
-          <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-        </Box>
+
+        <AvatarCard
+          email={currentUser?.email ? currentUser.email : undefined}
+          name={currentUser?.displayName ? currentUser.displayName : undefined}
+          photoURL={currentUser?.photoURL ? currentUser.photoURL : undefined}
+
+        />
+        <List>
+          {pages.map((v, i) => (
+
+            <ListItem button key={i} onClick={() => window.location.hash = v.link} >
+              <ListItemIcon>{v.icon}</ListItemIcon>
+              <ListItemText primary={v.title} />
+            </ListItem>
+            // </Link>
+          ))}
+        </List>
+
+        <Divider />
+
+
+        <ConfirmDialog
+          open={openDialog}
+          titleText='culo'
+          confirmText="confirm"
+          action={() => auth.signOut()}
+          setOpen={setOpenDialog}
+          askText='Wanna quit'
+        />
+
+        <Divider />
+        <List>
+          <ListItem button key={"signout"} onClick={() => setOpenDialog(true)}>
+            <ListItemIcon >
+              <ExitToApp />
+            </ListItemIcon>
+            <ListItemText primary={"signout"} />
+          </ListItem>
+        </List>
       </Drawer>
       ))
     </div>
