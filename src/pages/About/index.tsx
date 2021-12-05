@@ -23,6 +23,6 @@ export default function About() {
                 <ReactMarkdown>{content}</ReactMarkdown>
             </Container>
         </>
-
+        
     )
 }

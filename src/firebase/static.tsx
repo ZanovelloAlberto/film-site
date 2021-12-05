@@ -12,7 +12,6 @@ export const app = initializeApp({
   measurementId: "G-M54PFYTBM7"
 })
 
-export const auth = getAuth(app)
 
 export const signInWithGoogle = () => {
     let provider = new GoogleAuthProvider();

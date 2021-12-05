@@ -1,10 +1,10 @@
+import Content from "./Content"
 
-import Login from "./Login"
 
 const index = () => {
     return (
         <>
-          <Login/>
+          <Content/>
         </>
     )
 }

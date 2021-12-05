@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContextProvider } from './context';
 import { FirebaseContextProvider } from './firebase';
-import Main from 'Routes';
+import Routes from 'components/Routes';
 
 ReactDOM.render(
   (
     <AppContextProvider>
       <FirebaseContextProvider>
-        <Main />
+        <Routes />
       </FirebaseContextProvider>
     </AppContextProvider>
   )

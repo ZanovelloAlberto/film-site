@@ -1,6 +1,10 @@
-import { Grid, CircularProgress } from '@mui/material';
+import { Grid, CircularProgress, Typography } from '@mui/material';
 
-let SpinnerProgress = () => {
+interface IProps {
+    text?: string
+}
+
+let SpinnerProgress = ({text} : IProps) => {
     return (
         <Grid
             container
@@ -15,6 +19,9 @@ let SpinnerProgress = () => {
                     size={60}
                     thickness={3}
                 />
+            </Grid>            
+            <Grid item xs>
+                <Typography variant='h4'>{text}</Typography>
             </Grid>
         </Grid>
     )

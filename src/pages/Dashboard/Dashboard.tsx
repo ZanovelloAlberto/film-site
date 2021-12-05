@@ -85,7 +85,7 @@ const footers = [
   },
 ];
 
-function Content() {
+function Dashboard() {
   return (
     <React.Fragment>
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
@@ -213,4 +213,4 @@ function Content() {
   );
 }
 
-export default Content
+export default Dashboard

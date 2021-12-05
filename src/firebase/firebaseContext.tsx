@@ -1,7 +1,7 @@
 import { Auth, getAuth, onAuthStateChanged, User } from "firebase/auth"
 import React from "react"
 import { useState } from "react"
-import { app, auth } from "./static"
+import { app } from "./static"
 
 
 
@@ -12,9 +12,16 @@ import { app, auth } from "./static"
 const useValue = () => {
     
     const [currentUser, setCurrentUser] = useState<User|null>(null)
-    onAuthStateChanged(auth,(usr)=>setCurrentUser(usr))
+    const [loading, setLoading] = useState(true)
+    onAuthStateChanged(getAuth(),
+        (usr)=>{
+            setCurrentUser(usr);
+            setLoading(false)
+        })
+
     return {
-        currentUser
+        currentUser,
+        loading,
     }
 }
 

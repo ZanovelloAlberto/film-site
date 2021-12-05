@@ -22,7 +22,7 @@ const TopBar = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{background: "#1abc9c"}}>
         <Toolbar>
           <IconButton
             size="large"
@@ -36,7 +36,6 @@ const TopBar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Photos
           </Typography>
           {currentUser && (
             <>
