@@ -1,7 +1,7 @@
-import { List, ListItemIcon, Divider, ListItemText, Drawer } from '@mui/material';
+import { List, ListItemIcon, Divider, ListItemText, Drawer, Box } from '@mui/material';
 import { Settings, Movie, Info, AddBox, ExitToApp } from '@mui/icons-material';
 import { useContext, useState } from 'react';
-import {AvatarCard} from '../AvatarCard';
+import { AvatarCard } from '../AvatarCard';
 import { ConfirmDialog } from 'components/ConfirmDialog';
 import { ListItem } from '@mui/material';
 import { appContext } from 'context';
@@ -10,8 +10,8 @@ import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 const pages = [
   {
-    title: "Movies",
-    link: "/movies",
+    title: "Explore",
+    link: "/explore",
     icon: <Movie />,
 
   },
@@ -31,20 +31,24 @@ const pages = [
     icon: <AddBox />,
   }]
 
+const drawerWidth = 240
+
 export default function Sidebar() {
   const { sidebarOpen, setSidebarOpen } = useContext(appContext)
   const [openDialog, setOpenDialog] = useState(false)
-  const {currentUser} = useContext(firebaseContext)
+  const { currentUser } = useContext(firebaseContext)
   const navigate = useNavigate()
 
   return (
-    <div>
-      <Drawer
-        anchor="left"
-        open={sidebarOpen}
-        onClose={() => setSidebarOpen(false)}
-      >
-
+    <Drawer
+      anchor="left"
+      open={sidebarOpen}
+      onClose={() => setSidebarOpen(false)}
+    >
+      <Box
+        sx={{
+          width: `${drawerWidth}px`
+        }}>
         <AvatarCard
           email={currentUser?.email ? currentUser.email : undefined}
           name={currentUser?.displayName ? currentUser.displayName : undefined}
@@ -61,10 +65,7 @@ export default function Sidebar() {
             // </Link>
           ))}
         </List>
-
         <Divider />
-
-
         <ConfirmDialog
           open={openDialog}
           titleText='culo'
@@ -83,8 +84,7 @@ export default function Sidebar() {
             <ListItemText primary={"signout"} />
           </ListItem>
         </List>
-      </Drawer>
-      ))
-    </div>
+      </Box>
+    </Drawer>
   );
 }

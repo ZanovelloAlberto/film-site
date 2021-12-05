@@ -36,9 +36,8 @@ const TopBar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            App
           </Typography>
-          {currentUser && (
-            <>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -48,8 +47,6 @@ const TopBar = () => {
               >
                 <AccountCircle />
               </IconButton>
-            </>
-          )}
         </Toolbar>
       </AppBar>
     </Box>

@@ -1,4 +1,4 @@
-import { Login } from "pages";
+import { About, Login } from "pages";
 import Dashboard from "pages/Dashboard";
 import { useContext, useEffect } from "react";
 import {  Navigate, Route, Routes, useNavigate } from "react-router-dom";
@@ -19,6 +19,7 @@ const PublicRoutes = () => {
             <Route path="/" >
                 <Route index element={<Dashboard/>}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/about" element={<About/>}/>
 
             </Route>
             <Route path="/login" element={<Navigate replace to="/home" />} />

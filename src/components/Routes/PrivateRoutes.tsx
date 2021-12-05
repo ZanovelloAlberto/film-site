@@ -1,30 +1,42 @@
 import { useContext, useEffect } from "react";
-import { HashRouter, Navigate, Route, Router, Routes, useNavigate } from "react-router-dom";
+import { HashRouter, Navigate, Route, Router, Routes, useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import TopBar from "../TopBar/TopBar";
 import { firebaseContext } from "../../firebase";
+import { About } from "pages";
+import { Explore } from "pages";
 
 
 
 
 const PrivateRoutes = () => {
   let navigate = useNavigate()
-  const { currentUser } = useContext(firebaseContext)
-  useEffect(() => {
-    navigate("/",{replace:true})
-  }, [])
-  return (
+  let location = useLocation()
+  // const { currentUser } = useContext(firebaseContext)
+  console.log(location.pathname);
+  if (location.pathname == "/login") {
+    navigate("/", { replace: true })
 
-    // <Router location={"/"} navigator={}>
-      
+  }
+
+  return (
+    <>
+
+      <TopBar />
+      <Sidebar />
       <Routes>
-        <Route path="/" element={<><TopBar /><Sidebar /></>}>
+        <Route path="/">
+          <Route path="/about" element={<About />} />
+          <Route path="/explore" element={<Explore />} />
         </Route>
-        {/* <Route path="*" element={<Navigate replace to="/" />} /> */}
+        <Route
+          path="*"
+          element={<Navigate to="/" />}
+        />
 
       </Routes>
 
-    // </Router>
+    </>
   )
 }
 

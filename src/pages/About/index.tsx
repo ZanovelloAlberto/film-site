@@ -17,8 +17,6 @@ export default function About() {
     return (
 
         <>
-        <Button onClick={()=>{getAuth().signOut();console.log("cose");
-        }}>Cose</Button>
             <Container maxWidth="lg">
                 <ReactMarkdown>{content}</ReactMarkdown>
             </Container>
