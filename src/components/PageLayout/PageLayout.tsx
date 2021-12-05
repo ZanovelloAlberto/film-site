@@ -1,5 +1,4 @@
-import { Grid } from '@mui/core';
-import { Loader, PageHeader } from 'components';
+import { Grid } from '@mui/material';
 
 interface IProps {
     isLoading: boolean
@@ -15,11 +14,11 @@ let Page = ({ isLoading, useHeader, children, ...rest }: IProps) => {
         <Grid container>
             {useHeader &&
                 <Grid item xs={12}>
-                    <PageHeader {...rest} />
+                    {/* <PageHeader {...rest} /> */}
                 </Grid>
             }
             <Grid item xs>
-                {isLoading && <Loader />}
+                {isLoading && null}
                 {isLoading === false && children}
             </Grid>
         </Grid>

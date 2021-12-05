@@ -11,8 +11,8 @@ import { app, auth } from "./static"
 
 const useValue = () => {
     
-    onAuthStateChanged(auth,(usr)=>setCurrentUser(usr))
     const [currentUser, setCurrentUser] = useState<User|null>(null)
+    onAuthStateChanged(auth,(usr)=>setCurrentUser(usr))
     return {
         currentUser
     }

@@ -1,10 +1,12 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import NavBar from './components/NavBar'
 const arra = ["uno", "due", "tre"]
-const Dashboard = () => {
+const Header = () => {
     return (
         <>
+            <NavBar />
             <Box
 
                 sx={{
@@ -16,19 +18,9 @@ const Dashboard = () => {
             ><Typography variant='h3'>Film site</Typography>
                 <p>A <b>responsive</b> website created by me.</p>
             </Box>
-            <Box
-                sx={{
-                    overflow: "hidden",
-                    backgroundColor: "#333",
-                    position: "-webkit-sticky",
-                    top: 0
-                }}
-            >
-                {arra.map((uno)=> <a>{uno}</a>)}
-            </Box>
         </>
 
     )
 }
 
-export default Dashboard
+export default Header

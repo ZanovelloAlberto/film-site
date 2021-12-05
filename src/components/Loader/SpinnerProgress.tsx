@@ -1,4 +1,4 @@
-import { Grid, CircularProgress } from '@mui/core';
+import { Grid, CircularProgress } from '@mui/material';
 
 let SpinnerProgress = () => {
     return (
