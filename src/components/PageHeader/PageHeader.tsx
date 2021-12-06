@@ -9,15 +9,16 @@ export interface IProps {
 const PageHeader = ({ title, subtitle }: IProps) => {
     return (
         <>
-            <Grid container alignItems={"center"}>
+            <Grid container alignItems={"center"} >
                 <Grid item>
                     {React.isValidElement(title) ?
                         title :
-                        <Typography variant="h3">{title}</Typography>}
+                        <Typography variant="h4">{title}</Typography>}
                     {React.isValidElement(subtitle) ?
                         subtitle :
                         <Typography variant="h5">{subtitle}</Typography>}
                 </Grid>
+                
 
 
             </Grid>

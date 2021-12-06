@@ -5,6 +5,7 @@ import TopBar from "../TopBar/TopBar";
 import { firebaseContext } from "../../firebase";
 import { About } from "pages";
 import { Explore } from "pages";
+import AddMovie from "pages/AddMovie";
 
 
 
@@ -28,6 +29,7 @@ const PrivateRoutes = () => {
         <Route path="/">
           <Route path="/about" element={<About />} />
           <Route path="/explore" element={<Explore />} />
+          <Route path="/addmovie" element={<AddMovie />} />
         </Route>
         <Route
           path="*"
