@@ -1,7 +1,6 @@
 
 import React, { useContext, useState } from 'react'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
-import { Link } from 'react-router-dom'
 import { pages } from '../components/SideNav'
 import "./mybase"
 import { dbMovie, firestore } from './mybase'
@@ -20,13 +19,9 @@ const useValue = () => {
 
     return {
 
-        // page status
         page,
         setPage,
-
-        // 
         movies,
-
     }
 }
 

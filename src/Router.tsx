@@ -5,7 +5,7 @@ import {
   Route,
   HashRouter,
   StaticRouter,
-  
+
 } from "react-router-dom";
 import Movies from './pages/Movies'
 import SignIn from "./pages/SignIn";
@@ -42,10 +42,10 @@ import { Explore } from "@material-ui/icons";
 
 export default function Hub() {
 
-  
 
 
-  
+
+
 
   const [user] = useAuthState(auth);
 
@@ -53,11 +53,12 @@ export default function Hub() {
   return (
 
 
-      <div> 
-            
-        {!uno ?<Land />:<Logged />}
+    <div>
 
-      </div>
+      {uno ?
+          <Logged /> : <Land />}
+
+    </div>
 
 
 
@@ -65,36 +66,36 @@ export default function Hub() {
 }
 
 const Logged = () => {
-  
-  
+
+
   return (
 
-   
+
 
     <HashRouter>
-       
 
 
-      <Route component={TopBar}/>
 
-      
-    <Switch>
-      <Route path="/Movies" component={Movies}/>
-      <Route path="/settings" component={ReactHome}/>
-      <Route path="/about" component={About}/>
-      <Route path="/addMovie" component={AddMovie}/>
-      <Route path="/Movie" component={Movie}/>
-      <Route path="/Explore" component={Explore}/>
+      <Route component={TopBar} />
 
-      {/* <Route path="/Movie" >
+
+      <Switch>
+        <Route path="/Movies" component={Movies} />
+        <Route path="/settings" component={ReactHome} />
+        <Route path="/about" component={About} />
+        <Route path="/addMovie" component={AddMovie} />
+        <Route path="/Movie" component={Movie} />
+        <Route path="/Explore" component={Explore} />
+
+        {/* <Route path="/Movie" >
         <Movie/>
       </Route> */}
 
 
-      <Route>
-        <Explore/>
-      </Route>
-    </Switch>
+        <Route>
+          <Explore />
+        </Route>
+      </Switch>
 
 
     </HashRouter>
