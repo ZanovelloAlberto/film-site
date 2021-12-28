@@ -2,7 +2,6 @@ import { Button, Grid, TextField } from '@mui/material'
 import MovieCard from 'components/MovieCard'
 import PageLayout from 'components/PageLayout'
 import { Movie } from 'firebase/interfaces'
-import { Form } from 'formik'
 import React, { useContext } from 'react'
 import { addMovieContext } from './AddMovieContext'
 

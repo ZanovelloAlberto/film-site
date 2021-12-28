@@ -12,11 +12,10 @@ interface IProps {
 }
 let Page = ({ isLoading, useHeader, children, ...rest }: IProps) => {
     return (
-        <Grid container >
+        <Grid container spacing={2} >
             {useHeader &&
-                <Grid item xs={12}>
+                <Grid item xs={12} >
                     <PageHeader {...rest}/>
-                    <br/>
                 </Grid>
             }
             <Grid item xs>

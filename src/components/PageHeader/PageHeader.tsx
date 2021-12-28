@@ -10,7 +10,7 @@ const PageHeader = ({ title, subtitle }: IProps) => {
     return (
         <>
             <Grid container alignItems={"center"} >
-                <Grid item>
+                <Grid item paddingTop={2}> 
                     {React.isValidElement(title) ?
                         title :
                         <Typography variant="h4">{title}</Typography>}

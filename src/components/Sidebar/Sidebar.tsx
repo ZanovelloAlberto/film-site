@@ -68,11 +68,11 @@ export default function Sidebar() {
         <Divider />
         <ConfirmDialog
           open={openDialog}
-          titleText='culo'
-          confirmText="confirm"
+          titleText='Sign Out'
+          confirmText="Sign Out"
           action={() => getAuth().signOut()}
           setOpen={setOpenDialog}
-          askText='Wanna quit'
+          askText='Are you sure you want to signout?'
         />
 
         <Divider />
