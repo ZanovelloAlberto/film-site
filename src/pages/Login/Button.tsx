@@ -1,5 +1,4 @@
 import { Button } from "@mui/material";
-import { signInWithGoogle } from "../../firebase/static";
 
 
 

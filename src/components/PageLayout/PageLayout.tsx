@@ -7,7 +7,6 @@ interface IProps {
     useHeader: boolean
     title: React.ReactNode | string
     subtitle?: React.ReactNode | string
-    // addNewUrl?: string
     children: React.ReactNode
 }
 let Page = ({ isLoading, useHeader, children, ...rest }: IProps) => {

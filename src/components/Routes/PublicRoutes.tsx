@@ -5,7 +5,6 @@ import {  Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { deflateSync } from "zlib";
 import Sidebar from "../Sidebar/Sidebar";
 import TopBar from "../TopBar/TopBar";
-import { firebaseContext } from "../../firebase";
 
 
 

@@ -1,6 +1,5 @@
 import { Collections } from "@mui/icons-material";
 import { addDoc, collection, getDoc, getFirestore } from "firebase/firestore";
-import { app } from "firebase/static";
 import React, { useEffect } from "react";
 import { Database } from "tools/enum";
 
@@ -10,7 +9,7 @@ const useValue = () => {
         AddDoc()
     }, [])
     const AddDoc = async() => {
-        const docRef = await addDoc(collection(getFirestore(app), Database.Movies), {
+        const docRef = await addDoc(collection(getFirestore(), Database.Movies), {
             first: "Ada",
             last: "Lovelace",
             born: 1815

@@ -1,15 +1,11 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContextProvider } from './context';
-import { FirebaseContextProvider } from './firebase';
 import Routes from 'components/Routes';
 
 ReactDOM.render(
   (
     <AppContextProvider>
-      <FirebaseContextProvider>
         <Routes />
-      </FirebaseContextProvider>
     </AppContextProvider>
   )
   ,

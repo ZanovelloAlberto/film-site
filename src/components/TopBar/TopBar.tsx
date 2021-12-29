@@ -11,18 +11,22 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import { firebaseContext } from '../../firebase';
 import { useContext } from 'react';
 import { appContext } from '../../context';
 
 const TopBar = () => {
-    const {setSidebarOpen} = useContext(appContext)
+  const { setSidebarOpen, currentUser } = useContext(appContext)
 
-  const {currentUser} = useContext(firebaseContext)
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{background: "#1abc9c"}}>
+      <AppBar
+        position="fixed"
+        sx={
+          {
+            width: `calc(100% - ${240}px)`,
+            ml: `${240}px`
+          }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -30,7 +34,7 @@ const TopBar = () => {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
-            onClick={()=> setSidebarOpen(true)}
+            onClick={() => setSidebarOpen(true)}
 
           >
             <MenuIcon />
@@ -38,15 +42,15 @@ const TopBar = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             App
           </Typography>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </Box>

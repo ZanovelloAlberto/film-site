@@ -1,13 +1,13 @@
 import { Loader } from "components/SpinnerProgress"
-import { firebaseContext } from "firebase"
-import { useContext, useEffect } from "react"
-import { BrowserRouter, useNavigate } from "react-router-dom"
+import { useContext } from "react"
+import { appContext } from "context"
+import { BrowserRouter } from "react-router-dom"
 import PrivateRoutes from "./PrivateRoutes"
 import PublicRoutes from "./PublicRoutes"
 
 
 const Index = () => {
-    const { currentUser, loading } = useContext(firebaseContext)
+    const { currentUser, loading } = useContext(appContext)
 
     return (
         <>

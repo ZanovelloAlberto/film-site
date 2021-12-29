@@ -1,6 +1,4 @@
-import { Avatar, Card, IconButton, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, makeStyles, Paper, Typography } from '@mui/material';
-import { useContext } from 'react';
-import { firebaseContext } from '../../firebase';
+import { Avatar, Card, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, makeStyles, Paper, Typography } from '@mui/material';
 
 
 interface AvatarCardProps {

@@ -1,8 +1,6 @@
 import { Button, Grid, TextField } from '@mui/material'
-import MovieCard from 'components/MovieCard'
 import PageLayout from 'components/PageLayout'
-import { Movie } from 'firebase/interfaces'
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { addMovieContext } from './AddMovieContext'
 
 const AddMovie = () => {

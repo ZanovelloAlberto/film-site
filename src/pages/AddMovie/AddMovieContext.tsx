@@ -1,5 +1,4 @@
 import { addDoc, collection, getDoc, getFirestore } from "firebase/firestore";
-import { app } from "firebase/static";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Database } from "tools/enum";
@@ -24,7 +23,7 @@ const useValue = () => {
     const AddMovie = async(movie: Movie) => {
         setLoading(true)
         try {
-            const docRef = await addDoc(collection(getFirestore(app), Database.Movies), movie);
+            const docRef = await addDoc(collection(getFirestore(), Database.Movies), movie);
         } catch (error) {
             
         }

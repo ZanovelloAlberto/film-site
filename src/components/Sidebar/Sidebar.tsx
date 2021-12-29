@@ -5,7 +5,6 @@ import { AvatarCard } from '../AvatarCard';
 import { ConfirmDialog } from 'components/ConfirmDialog';
 import { ListItem } from '@mui/material';
 import { appContext } from 'context';
-import { firebaseContext } from 'firebase';
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 const pages = [
@@ -34,16 +33,22 @@ const pages = [
 const drawerWidth = 240
 
 export default function Sidebar() {
-  const { sidebarOpen, setSidebarOpen } = useContext(appContext)
+  const { sidebarOpen, setSidebarOpen,currentUser } = useContext(appContext)
   const [openDialog, setOpenDialog] = useState(false)
-  const { currentUser } = useContext(firebaseContext)
   const navigate = useNavigate()
 
   return (
     <Drawer
-      anchor="left"
-      open={sidebarOpen}
-      onClose={() => setSidebarOpen(false)}
+    sx={{
+      width: drawerWidth,
+      flexShrink: 0,
+      '& .MuiDrawer-paper': {
+        width: drawerWidth,
+        boxSizing: 'border-box',
+      },
+    }}
+    variant="permanent"
+    anchor="left"
     >
       <Box
         sx={{
