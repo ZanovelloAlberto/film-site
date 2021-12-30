@@ -4,7 +4,7 @@ import TopBar from "../TopBar/TopBar";
 import { About } from "pages";
 import { Explore } from "pages";
 import AddMovie from "pages/AddMovie";
-import { Box } from "@mui/material";
+import { Box, Toolbar } from "@mui/material";
 
 
 
@@ -25,8 +25,13 @@ const PrivateRoutes = () => {
       <Sidebar />
       <Box
         component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+        // sx={
+        //   {
+        //     width: `calc(100% - ${240}px)`,
+        //     ml: `${240}px`
+        //   }}
       >
+        <Toolbar/>
       <Routes>
         <Route path="/">
           <Route path="/about" element={<About />} />

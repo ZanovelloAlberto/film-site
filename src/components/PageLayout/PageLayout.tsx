@@ -9,7 +9,7 @@ interface IProps {
     subtitle?: React.ReactNode | string
     children: React.ReactNode
 }
-let Page = ({ isLoading, useHeader, children, ...rest }: IProps) => {
+let PageLayout = ({ isLoading, useHeader, children, ...rest }: IProps) => {
     return (
         <Grid container spacing={2} >
             {useHeader &&
@@ -25,4 +25,4 @@ let Page = ({ isLoading, useHeader, children, ...rest }: IProps) => {
     )
 }
 
-export default Page;
+export default PageLayout;

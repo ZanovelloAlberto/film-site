@@ -15,6 +15,11 @@ const pages = [
 
   },
   {
+    title: "Add Movie",
+    link: "/addMovie",
+    icon: <AddBox />,
+  },
+  {
     title: "Settings",
     link: "/settings",
     icon: <Settings />
@@ -23,73 +28,65 @@ const pages = [
     title: "About",
     link: "/about",
     icon: <Info />,
-  },
-  {
-    title: "Add Movie",
-    link: "/addMovie",
-    icon: <AddBox />,
-  }]
+  }
+]
 
 const drawerWidth = 240
 
 export default function Sidebar() {
-  const { sidebarOpen, setSidebarOpen,currentUser } = useContext(appContext)
+  const { sidebarOpen, setSidebarOpen, currentUser } = useContext(appContext)
   const [openDialog, setOpenDialog] = useState(false)
   const navigate = useNavigate()
 
   return (
     <Drawer
-    sx={{
-      width: drawerWidth,
-      flexShrink: 0,
-      '& .MuiDrawer-paper': {
+      sx={{
         width: drawerWidth,
-        boxSizing: 'border-box',
-      },
-    }}
-    variant="permanent"
-    anchor="left"
+        flexShrink: 0,
+        '& .MuiDrawer-paper': {
+          width: drawerWidth,
+          boxSizing: 'border-box',
+        },
+      }}
+      variant="permanent"
+      anchor="left"
     >
-      <Box
-        sx={{
-          width: `${drawerWidth}px`
-        }}>
-        <AvatarCard
-          email={currentUser?.email ? currentUser.email : undefined}
-          name={currentUser?.displayName ? currentUser.displayName : undefined}
-          photoURL={currentUser?.photoURL ? currentUser.photoURL : undefined}
 
-        />
-        <List>
-          {pages.map((v, i) => (
+      <AvatarCard
+        email={currentUser?.email ? currentUser.email : undefined}
+        name={currentUser?.displayName ? currentUser.displayName : undefined}
+        photoURL={currentUser?.photoURL ? currentUser.photoURL : undefined}
 
-            <ListItem button key={i} onClick={() => navigate(v.link)} >
-              <ListItemIcon>{v.icon}</ListItemIcon>
-              <ListItemText primary={v.title} />
-            </ListItem>
-            // </Link>
-          ))}
-        </List>
-        <Divider />
-        <ConfirmDialog
-          open={openDialog}
-          titleText='Sign Out'
-          confirmText="Sign Out"
-          action={() => getAuth().signOut()}
-          setOpen={setOpenDialog}
-          askText='Are you sure you want to signout?'
-        />
+      />
+      <List>
+        {pages.map((v, i) => (
 
-        <Divider />
-        <List>
-          <ListItem button key={"signout"} onClick={() => setOpenDialog(true)}>
-            <ListItemIcon >
-              <ExitToApp />
-            </ListItemIcon>
-            <ListItemText primary={"signout"} />
+          <ListItem button key={i} onClick={() => navigate(v.link)} >
+            <ListItemIcon>{v.icon}</ListItemIcon>
+            <ListItemText primary={v.title} />
           </ListItem>
-        </List>
-      </Box>
+          // </Link>
+        ))}
+      </List>
+      <Divider />
+      <ConfirmDialog
+        open={openDialog}
+        titleText='Sign Out'
+        confirmText="Sign Out"
+        action={() => getAuth().signOut()}
+        setOpen={setOpenDialog}
+        askText='Are you sure you want to signout?'
+      />
+
+      <Divider />
+      <List>
+        <ListItem button key={"signout"} onClick={() => setOpenDialog(true)}>
+          <ListItemIcon >
+            <ExitToApp />
+          </ListItemIcon>
+          <ListItemText primary={"signout"} />
+        </ListItem>
+      </List>
     </Drawer>
   );
 }
